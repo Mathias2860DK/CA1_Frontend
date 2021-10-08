@@ -19,6 +19,9 @@ document.getElementById("all-content").style.display = "block"
 
 
 /* JS For Exercise-3 below */
+
+//Edit person
+
 function getAllPersons(){
 personFacade.getPersons()
 .then(persons =>{
