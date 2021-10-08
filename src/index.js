@@ -1,7 +1,9 @@
 import "./style.css"
 import "bootstrap/dist/css/bootstrap.css"
 import "./jokeFacade"
+import "./personFacade"
 import jokeFacade from "./jokeFacade"
+import personFacade from "./personFacade"
 
 document.getElementById("all-content").style.display = "block"
 
@@ -17,8 +19,38 @@ document.getElementById("all-content").style.display = "block"
 
 
 /* JS For Exercise-3 below */
+function getAllPersons(){
+personFacade.getPersons()
+.then(persons =>{
+  const personRows = persons.map(person =>`
+<tr>
+<td>${person.firstName}</td>
+<td>${person.lastName}</td>
+<td>${person.email}</td>
+<td>${person.phones.map(phone => `<span>${phone.phoneNumber}</span><br>`).join()}</td>
+<td>${person.hobbies.map(hobby => `<span>${hobby.name}</span><br>`).join()}</td>
+</tr>
+  `)
+  const userRowsAsString = personRows.join('');
+  document.getElementById("allUserRows").innerHTML = userRowsAsString;
+})
+}
+getAllPersons()//test data
 
 
+//find persons by hobby
+document.getElementById("findPersonByHobbyButton").addEventListener('click', event => personFacade.findPersonsByHobby());
+
+//Find persons all hobbies
+document.getElementById("findAllPersonsButton").addEventListener('click', event => getAllPersons());
+
+//Find persons by zip
+document.getElementById("findPersonByZipButton").addEventListener('click', event => personFacade.findPersonsByZip());
+
+
+document.getElementById("findPersonByPhoneButton").addEventListener('click', event => personFacade.findPersonByPhone());
+
+document.getElementById("submitForm").addEventListener('click', event => personFacade.getPersonToAdd());
 /* 
 Do NOT focus on the code below, UNLESS you want to use this code for something different than
 the Period2-week2-day3 Exercises
