@@ -27,6 +27,7 @@ personFacade.getPersons()
 .then(persons =>{
   const personRows = persons.map(person =>`
 <tr>
+<td>${person.id}</td>
 <td>${person.firstName}</td>
 <td>${person.lastName}</td>
 <td>${person.email}</td>
