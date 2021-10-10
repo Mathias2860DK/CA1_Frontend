@@ -22,6 +22,11 @@ document.getElementById("all-content").style.display = "block"
 
 //Edit person
 
+/*document.getElementById("find_person_to_edit").addEventListener('click',function(){
+  console.log(document.getElementById("find_person_to_edit_text").value);
+
+})*/
+
 function getAllPersons(){
 personFacade.getPersons()
 .then(persons =>{
@@ -41,6 +46,8 @@ personFacade.getPersons()
 }
 getAllPersons()//test data
 
+//Find person to edit and display into edit user form
+document.getElementById("find_person_to_edit").addEventListener('click', event => personFacade.findPersonById());
 
 //find persons by hobby
 document.getElementById("findPersonByHobbyButton").addEventListener('click', event => personFacade.findPersonsByHobby());

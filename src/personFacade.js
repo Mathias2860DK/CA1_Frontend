@@ -6,6 +6,12 @@ return fetch(URL + "/all")
 .then(res => res.json())
 }
 
+///person/{id}
+function getPersonById(id){
+return fetch(URL + "/person/" + id)
+.then(res => res.json())
+}
+
 function getPersonsByHobby(hobby){
 return fetch(URL + "/hobby/" + hobby)
 .then(res => res.json())
@@ -20,20 +26,6 @@ function getPersonByPhone(phone){
 return fetch(URL + "/phone/" + phone)
 .then(res => res.json())
 }
-/*
-.then(persons =>{
-  const personRows = persons.map(person =>`
-<tr>
-<td>${person.firstName}</td>
-<td>${person.lastName}</td>
-<td>${person.email}</td>
-</tr>
-  `)
-  const userRowsAsString = personRows.join('');
-  document.getElementById("allUserRows").innerHTML = userRowsAsString;
-})
-
-*/
 
 function findPersonByPhone(){
 const phone = document.getElementById("findPersonByPhoneText").value;
@@ -73,6 +65,22 @@ const zip = document.getElementById("findPersonByZipText").value;
 })
 }
 
+function findPersonById(){
+    const personIdToEdit = document.getElementById("find_person_to_edit_text").value;
+    console.log(personIdToEdit);
+ getPersonById(personIdToEdit)
+ .then(person => {
+     //Sets the 'edit user' table to the values the user has now.
+     document.getElementById("edit_first_name").value = person.firstName;
+     document.getElementById("edit_last_name").value = person.lastName;
+     document.getElementById("edit_mail").value = person.email;
+     document.getElementById("edit_street").value = person.address.street;
+     document.getElementById("edit_zip_code").value = person.address.cityInfo.zipCode;
+     document.getElementById("edit_city").value = person.address.cityInfo.city;
+
+ })
+}
+
 function findPersonsByHobby()
 {
   const hobby = document.getElementById("findPersonByHobbyText").value;
@@ -94,10 +102,6 @@ function findPersonsByHobby()
 })
 }
 
-function getUser(id) {
-    return fetch(URL + '/' + id)
-        .then(res => handleHttpErrors(res))
-}
 
 function getPersonToAdd(){
     const firstName = document.getElementById("first_name").value;
@@ -167,13 +171,14 @@ const personFacade = {
     getPersons,
     getPersonsByHobby,
     findPersonsByHobby,
-    getUser,
+    getPersonById,
     addPerson,
     editUser,
     getPersonToAdd,
     findPersonByPhone,
     findPersonsByZip,
-    deleteUser
+    deleteUser, 
+    findPersonById
 }
 
 function makeOptions(method, body) {
