@@ -46,6 +46,21 @@ personFacade.getPersons()
 }
 getAllPersons()//test data
 
+//Push edited person to database: 
+document.getElementById("submitEdit").addEventListener('click', function(){
+  const id = document.getElementById("find_person_to_edit_text").value;
+  const firstName = document.getElementById("edit_first_name").value;
+     const lastName = document.getElementById("edit_last_name").value;
+    const email = document.getElementById("edit_mail").value;
+    const street = document.getElementById("edit_street").value;
+    const zipCode =  document.getElementById("edit_zip_code").value;
+     const city = document.getElementById("edit_city").value;
+
+     console.log(id,firstName,lastName)
+
+
+})
+
 //Find person to edit and display into edit user form
 document.getElementById("find_person_to_edit").addEventListener('click', event => personFacade.findPersonById());
 

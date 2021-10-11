@@ -159,8 +159,10 @@ function addPerson(person) {
 
 
 
-function editUser(user){
-    
+function editPerson(person, id){
+    const option = makeOptions("PUT", person);
+    return fetch(URL + "/" + id, option)
+        .then(res => handleHttpErrors(res))
 }
 
 function deleteUser(id){
@@ -173,7 +175,7 @@ const personFacade = {
     findPersonsByHobby,
     getPersonById,
     addPerson,
-    editUser,
+    editPerson,
     getPersonToAdd,
     findPersonByPhone,
     findPersonsByZip,
