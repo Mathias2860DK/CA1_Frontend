@@ -55,9 +55,47 @@ document.getElementById("submitEdit").addEventListener('click', function(){
     const street = document.getElementById("edit_street").value;
     const zipCode =  document.getElementById("edit_zip_code").value;
      const city = document.getElementById("edit_city").value;
+     const name = document.getElementById("edit_hobby").value;
+     const phoneNumber = document.getElementById("edit_phone").value;
 
-     console.log(id,firstName,lastName)
+      const cityInfo = {
+        "zipCode" : zipCode,
+        "city" : city
+    }
+    const address = {
+        "street" : street,
+        "additionalInfo" : "",
+        "cityInfo" : cityInfo
+    }
 
+    const hobby = {
+      "name" : name,
+      "description" : ""
+    }
+    const hobbies = [
+      hobby
+    ]
+    const phone = {
+      "phoneNumber" : phoneNumber,
+      "description" : "privat"
+    }
+    const phones = [
+      phone
+    ]
+
+    const person = {
+        "firstName" : firstName,
+        "lastName" : lastName,
+        "email" : email,
+        "address" : address,
+        "hobbies" : hobbies,
+        "phones" : phones
+
+    }
+
+     console.log(person);
+
+     personFacade.editPerson(person, id);
 
 })
 

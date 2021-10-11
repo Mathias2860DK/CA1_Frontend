@@ -77,7 +77,8 @@ function findPersonById(){
      document.getElementById("edit_street").value = person.address.street;
      document.getElementById("edit_zip_code").value = person.address.cityInfo.zipCode;
      document.getElementById("edit_city").value = person.address.cityInfo.city;
-
+     document.getElementById("edit_hobby").value = person.hobbies[0].name;
+     document.getElementById("edit_phone").value = person.phones[0].phoneNumber;
  })
 }
 
