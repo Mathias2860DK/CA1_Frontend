@@ -1,5 +1,5 @@
 //http://localhost:8080/devops_starter_war_exploded/
-const URL = "http://localhost:8080/devops_starter_war_exploded/api/xxx";
+const URL = "https://theagns.com/devops-starter/api/xxx";
 
 function getPersons(){
 return fetch(URL + "/all")
